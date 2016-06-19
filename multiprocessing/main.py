@@ -11,16 +11,13 @@ class Worker(Process):
         self._index = index
 
     def run(self):
-        while True:
+        while not self._queue.empty():
             task = self._queue.get()
-            if task is None:
-                with open('task{}.out'.format(self._index), 'w+') as f:
-                    f.write('\n'.join(self._results))
-                self._queue.task_done()
-                break
             task()
             self._results.append(str(task))
             self._queue.task_done()
+        with open('task{}.out'.format(self._index), 'w+') as f:
+            f.write('\n'.join(self._results))
 
 class Task(object):
     def __init__(self, param):
@@ -75,6 +72,8 @@ if __name__ == '__main__':
         worker.start()
 
     tasks_file = open(args.file, 'r')
+
+    begin_time = time.time()
     while True:
         task_str = tasks_file.readline()
         if not task_str:
@@ -85,10 +84,6 @@ if __name__ == '__main__':
         elif task[0] == 'check':
             a, b = task[1].split(' ')
             queue.put(CheckTask((int(a), int(b))))
-
-    begin_time = time.time()
-    for i in range(args.processes):
-        queue.put(None)
 
     queue.join()
     print(time.time() - begin_time)
