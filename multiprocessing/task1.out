@@ -1,0 +1,9 @@
+Task: check, params: (4718, 4184813), answer: 2090048
+Task: prime, params: 45, answer: False
+Task: check, params: (2, 20), answer: 10
+Task: prime, params: 8992987, answer: False
+Task: check, params: (1000000000, 1000000067), answer: 34
+Task: prime, params: 4500003, answer: False
+Task: check, params: (15, 18), answer: 2
+Task: check, params: (1, 590000), answer: 295000
+Task: prime, params: 45000084293, answer: True

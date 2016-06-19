@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Primes</title>
+</head>
+<body>
+    <h1>{{ n }} first prime numbers:</h1>
+    <div>
+        <ul>
+            {% for prime in primes %}
+            <li>{{ prime }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

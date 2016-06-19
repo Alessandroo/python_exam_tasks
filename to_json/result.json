@@ -1,0 +1,16 @@
+[
+    {
+        "b": [
+            1,
+            2
+        ],
+        "a": 5
+    },
+    {
+        "smth": {
+            "true": true,
+            "nothing": null
+        },
+        "any_number": 12.78
+    }
+]
